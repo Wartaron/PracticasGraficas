@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import Cargar_CSV from './Operaciones/CargarCSV'
+/*import Cargar_CSV from './Operaciones/CargarCSV'*/
+
+import Pivotes_Area_Grafico from './Operaciones/PivotesYAreadeGrafico'
 
 class App extends Component {
 
@@ -11,7 +13,7 @@ class App extends Component {
 
     this.state = {
         categoria: 'NA',
-        variable: 'NA'
+        periodo: 'NA'
     }
     this.ponerCategoria = this.ponerCategoria.bind(this);
   }
@@ -19,7 +21,7 @@ class App extends Component {
   ponerCategoria(cabecera){
     this.setState({
       'categoria': cabecera.categoria,
-      'variable': cabecera.variable
+      'periodo': cabecera.periodo
     })
   }
 
@@ -29,7 +31,7 @@ class App extends Component {
 
         <nav className="navbar navbar-dark bg-dark">
           <p className="text-white mb-0">
-            Informacion de <span className="badge badge-pill badge-light">"{this.state.categoria}"</span> con informacion de <span className="badge badge-pill badge-light">"{this.state.variable}"</span>
+            Informacion de <span className="badge badge-pill badge-light">"{this.state.categoria}"</span> con informacion a <span className="badge badge-pill badge-light">"{this.state.periodo}"</span>
           </p>
         </nav>
 
@@ -39,7 +41,7 @@ class App extends Component {
         </header>
 
         <div className="container">
-            <Cargar_CSV darCategoria={this.ponerCategoria}/>
+          <Pivotes_Area_Grafico darCategoria={this.ponerCategoria}/>
         </div>
       </div>
     );

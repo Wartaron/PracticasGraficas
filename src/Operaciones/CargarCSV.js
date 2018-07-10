@@ -1,38 +1,34 @@
 import React, { Component } from 'react';
 import CSVReader from 'react-csv-reader'
 
+var data = [];
+
 class Cargar_CSV extends Component {
   constructor() {
     super();
 
     this.state = {
       categoria: 'CEREALES LISTOS',
-      variable: ''
+      data
     }
 
-    this.subirArchivo = this.subirArchivo.bind(this);
     this.leerCSV = this.leerCSV.bind(this);
-  }
-
-  subirArchivo(){
-    this.props.darCategoria(this.state);
-    console.log(this.state);
   }
 
   leerCSV(e){
     console.log(e);
     this.setState({
       categoria: e[1][1],
-      variable: e[1][2]
+      data: e
     })
     console.log(this.state);
-    this.subirArchivo();
+    this.props.darData(e);
   }
 
   render()
   {
     return(
-      <div className="card">
+      <div className="card mt-4">
         <div className="card-header">
           <h3 className="text-primary">Cargar Archivo CSV</h3>
         </div>
