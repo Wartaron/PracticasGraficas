@@ -10,40 +10,33 @@ class App extends Component {
     super();
 
     this.state = {
-        categoria: '',
-        fabricante: ''
+        categoria: 'NA',
+        variable: 'NA'
     }
-
     this.ponerCategoria = this.ponerCategoria.bind(this);
-
   }
 
   ponerCategoria(cabecera){
     this.setState({
       'categoria': cabecera.categoria,
-      'fabricante': cabecera.fabricante
+      'variable': cabecera.variable
     })
   }
 
   render() {
     return (
       <div className="App">
+
+        <nav className="navbar navbar-dark bg-dark">
+          <p className="text-white mb-0">
+            Informacion de <span className="badge badge-pill badge-light">"{this.state.categoria}"</span> con informacion de <span className="badge badge-pill badge-light">"{this.state.variable}"</span>
+          </p>
+        </nav>
+
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Ejemplo de Grafica en React y D3</h1>
         </header>
-
-
-        <div className="container">
-          <div className="panel panel-warning">
-            <div className="panel-heading">
-              <h3 className="panel-title">Grafica</h3>
-            </div>
-            <div className="panel-body">
-              Informacion de {this.state.categoria} del fabricante {this.state.fabricante}
-            </div>
-          </div>
-        </div>
 
         <div className="container">
             <Cargar_CSV darCategoria={this.ponerCategoria}/>

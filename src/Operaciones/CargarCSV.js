@@ -7,44 +7,41 @@ class Cargar_CSV extends Component {
 
     this.state = {
       categoria: 'CEREALES LISTOS',
-      fabricante: 'KELLOGGS'
+      variable: ''
     }
 
     this.subirArchivo = this.subirArchivo.bind(this);
     this.leerCSV = this.leerCSV.bind(this);
   }
 
-  subirArchivo(e){
-    this.leerCSV
-    e.preventDefault();
+  subirArchivo(){
     this.props.darCategoria(this.state);
     console.log(this.state);
   }
 
   leerCSV(e){
-    e.preventDefault();
-    console.log(e.target.value);
+    console.log(e);
+    this.setState({
+      categoria: e[1][1],
+      variable: e[1][2]
+    })
+    console.log(this.state);
+    this.subirArchivo();
   }
 
   render()
   {
     return(
-        <div className="card">
-          <form className="card-body" onSubmit={this.subirArchivo}>
-            <div className="form-group">
-              <label htmlFor="files" className="text-primary">Carga un Archivo CSV:</label>
-              <input
-                type="file"
-                id="files"
-                className="form-control"
-                accept=".csv"
-                required
-                onChange={this.cambiarState} />
-            </div>
-            <div className="form-group">
-              <button type="submit" id="submit-file" className="btn btn-primary" onClick={this.leerCSV}>Upload File</button>
-            </div>
-          </form>
+      <div className="card">
+        <div className="card-header">
+          <h3 className="text-primary">Cargar Archivo CSV</h3>
+        </div>
+        <div className="card-body">
+          <CSVReader
+            id="lectorcsv"
+            onFileLoaded={this.leerCSV}/>
+        </div>
+
       </div>
     )
   }
