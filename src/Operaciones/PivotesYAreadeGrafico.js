@@ -130,6 +130,9 @@ class Pivotes_Area_Grafico extends Component {
             .tickSize(0)
             .tickPadding(6));
 
+    g.selectAll("text")
+      .text(function(d, i) {return xz[i]});
+
     d3.selectAll("input")
         .on("change", changed);
 
