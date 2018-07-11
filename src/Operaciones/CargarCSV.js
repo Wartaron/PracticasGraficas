@@ -16,12 +16,10 @@ class Cargar_CSV extends Component {
   }
 
   leerCSV(e){
-    console.log(e);
     this.setState({
       categoria: e[1][1],
       data: e
     })
-    console.log(this.state);
     this.props.darData(e);
   }
 

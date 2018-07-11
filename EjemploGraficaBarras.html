@@ -35,7 +35,11 @@ var xz = d3.range(m),
     yMax = d3.max(yz, function(y) { return d3.max(y); }),
     y1Max = d3.max(y01z, function(y) { return d3.max(y, function(d) { return d[1]; }); });
 
-console.log(xz);
+    console.log(xz);
+    console.log(typeof(yz[0][0]));
+    console.log(y01z);
+    console.log(yMax);
+    console.log(y1Max);
 
 var svg = d3.select("svg"),
     margin = {top: 40, right: 10, bottom: 20, left: 10},
@@ -132,8 +136,6 @@ function bumps(m) {
   for (i = 0; i < m; ++i) {
     values[i] = 0.1 + 0.1 * Math.random();
   }
-
-  console.log("hola", values);
 
   // Add five random bumps.
   for (j = 0; j < 5; ++j) {
